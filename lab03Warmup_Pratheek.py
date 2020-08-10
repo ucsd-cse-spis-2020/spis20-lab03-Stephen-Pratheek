@@ -1,4 +1,10 @@
+#Pratheek S. Math-CS from Warren
+#SPIS 2020
+#The purpose of the file is to explore the usage of the turtle Module
+
 import turtle
+#The function draws the letter P
+#The parameter is a turtle type object
 
 def drawP(theTurtle):
     ''' Draw a simple picture using a turtle '''
@@ -11,9 +17,6 @@ def drawP(theTurtle):
     theTurtle.forward(100)
     theTurtle.forward(100)
     
-
-#myTurtle = turtle.Turtle()  # Create a new Turtle object
-#drawP(myTurtle)   # make the new Turtle draw the shape
 
 turtle1 = turtle.Turtle()
 turtle2 = turtle.Turtle()
