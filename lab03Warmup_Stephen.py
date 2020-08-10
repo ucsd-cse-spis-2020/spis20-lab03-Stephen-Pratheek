@@ -38,4 +38,10 @@ Drawing the first initial of my first name: Stephen
     theTurtle.forward(25)
 
 firstInitial = turtle.Turtle()
+secondInitial = turtle.Turtle()
 drawFirstInitial(firstInitial)
+
+secondInitial.penup()
+secondInitial.setpos(0,150)
+secondInitial.pendown()
+drawFirstInitial(secondInitial)
