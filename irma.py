@@ -50,15 +50,11 @@ def irma():
         # This line gives you an "iterator" you can use to get each line
         # in the file.
         pointreader = csv.reader(csvfile)
-
-        # You'll need to add some code here, before the loop
-        # One thing you'll need to figure out how to do is to
-        # skip the first line of the file (which is the header).
-        # You might use a boolean variable, or you can
-        # look into Python's built-in next function
-        #(https://docs.python.org/3/library/functions.html#next)
-        # pointreader is an iterator
-
+        next(pointreader)
+        t.penup()
+        first_row = next(pointreader)
+        t.setpos(float(first_row[2]), float(first_row[3]))
+        t.pendown()
         for row in pointreader:
             # row is a list representing each line in the csv file
             # Each comma separated element is in its own index position
@@ -66,10 +62,41 @@ def irma():
             # row in the file.
             # Make sure you understand what is happening here.
             # Then, you'll need to change this code
-            print("Date:", row[0], "Time:", row[1])
-
-
-
+            #Latitude is x and longitude is y
+            print("Latitude:", row[3], "longitude:", row[2], "Wind:", row[4])
+            lat = float(row[3])
+            lon = float(row[2])
+            mph = int(row[4])
+            if mph < 74:
+                t.pencolor("White")
+                t.pensize(0)
+                t.setpos(lat, lon)
+                t.write('0')
+            elif mph < 96:
+                t.pencolor("Blue")
+                t.pensize(1)
+                t.setpos(lat, lon)
+                t.write('1')
+            elif mph < 111:
+                t.pencolor("Green")
+                t.pensize(2)
+                t.setpos(lat, lon)
+                t.write('2')
+            elif mph < 131:
+                t.pencolor("Yellow")
+                t.pensize(3)
+                t.setpos(lat, lon)
+                t.write('3')
+            elif mph < 156:
+                t.pencolor("Orange")
+                t.pensize(4)
+                t.setpos(lat, lon)
+                t.write('4')
+            else:
+                t.pencolor("Red")
+                t.pensize(5)
+                t.setpos(lat, lon)
+                t.write('5')
     # Hack to make sure a reference to the background image stays around
     # Do not remove or change this line
     return map_bg_img
@@ -80,3 +107,5 @@ def irma():
 
 if __name__ == "__main__":
     bg=irma()
+
+
